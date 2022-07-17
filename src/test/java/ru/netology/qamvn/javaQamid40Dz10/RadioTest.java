@@ -56,6 +56,19 @@ public class RadioTest {
     }
 
     @Test
+    public void shouldIncreaseRadioStation() {
+        Radio radio = new Radio();
+
+        radio.setRadioStation(0);
+        radio.increaseRadioStation();
+
+        int expected = 1;
+        int actual = radio.getRadioStation();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
     public void shouldSetToMaxStationAfterMinStation() {
         Radio radio = new Radio();
 
