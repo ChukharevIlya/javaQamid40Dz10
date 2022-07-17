@@ -42,10 +42,10 @@ public class Radio {
 
     // выставление любой радиостаници
     public void setRandomRadioStation(int randomRadioStation) {
-        if (currentRadioStation > 9) {
+        if (randomRadioStation > 9) {
             return;
         }
-        if (currentRadioStation < 0) {
+        if (randomRadioStation < 0) {
             return;
         }
         currentRadioStation = randomRadioStation;
