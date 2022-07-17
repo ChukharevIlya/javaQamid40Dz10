@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 public class RadioTest {
 
     @Test
-    public void shuldSetRadioStation() {
+    public void shuoldSetMaxRadioStation() {
         Radio radio = new Radio();
 
         radio.setRadioStation(9);
@@ -16,6 +16,18 @@ public class RadioTest {
         int actual = radio.getRadioStation();
 
         Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldSetMinRadioStation() {
+        Radio radio = new Radio();
+
+        radio.setRadioStation(0);
+
+        int expexted = 0;
+        int actual = radio.getRadioStation();
+
+        Assertions.assertEquals(expexted, actual);
     }
 
     @Test

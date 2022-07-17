@@ -10,14 +10,6 @@ public class Radio {
         return currentRadioStation;
     }
 
-    public void setToMinRadioStation() {
-        currentRadioStation = 0;
-    }
-
-    public void setToMaxRadioStation() {
-        currentRadioStation = 9;
-    }
-
     public void setRadioStation(int newRadioStation) {
         if (newRadioStation < 0) {
             return;
