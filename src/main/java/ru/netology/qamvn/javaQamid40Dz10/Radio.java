@@ -2,8 +2,8 @@ package ru.netology.qamvn.javaQamid40Dz10;
 
 public class Radio {
 
-    public int currentVolume;
-    public int currentRadioStation;
+    private int currentVolume;
+    private int currentRadioStation;
 
     // Номер текущей радиостанции может принимать значения только в пределах от 0 до 9
     public int getRadioStation() {
@@ -24,9 +24,16 @@ public class Radio {
     public void increaseRadioStation() {
         if (currentRadioStation < 9) {
             currentRadioStation = currentRadioStation + 1;
+        } else {
+            currentRadioStation = 0;
         }
+    }
+
+    public void returnToMinStationAfterMaxStation() {
         if (currentRadioStation == 9) {
             currentRadioStation = 0;
+        } else {
+            currentRadioStation = currentRadioStation + 1;
         }
     }
 
@@ -34,9 +41,16 @@ public class Radio {
     public void decreaseRadioStation() {
         if (currentRadioStation > 0) {
             currentRadioStation = currentRadioStation - 1;
+        } else {
+            currentRadioStation = 9;
         }
+    }
+
+    public void setToMaxStationAfterMinStation() {
         if (currentRadioStation == 0) {
             currentRadioStation = 9;
+        } else {
+            currentRadioStation = currentRadioStation - 1;
         }
     }
 
@@ -67,20 +81,32 @@ public class Radio {
     }
 
     // нажатие кнопки "+"
+    public void stopIncreaseVolumeOn10() {
+        if (currentVolume == 10) {
+            currentVolume = 10;
+        }
+        if (currentVolume < 10) {
+            currentVolume = currentVolume + 1;
+        }
+    }
+
     public void increaseVolume() {
         if (currentVolume < 10) {
             currentVolume = currentVolume + 1;
         }
-        if (currentVolume == 10) {
-            currentVolume = 10;
-        }
     }
 
     // нажатие кнопки "-"
-    public void decreaseVolume() {
+    public void stopDecreaseVolumeOn0() {
         if (currentVolume == 0) {
             currentVolume = 0;
         }
+        if (currentVolume > 0) {
+            currentVolume = currentVolume - 1;
+        }
+    }
+
+    public void decreaseVolume() {
         if (currentVolume > 0) {
             currentVolume = currentVolume - 1;
         }
