@@ -1,11 +1,22 @@
 package ru.netology.qamvn.javaQamid40Dz10;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
 public class Radio {
 
     private int currentVolume;
     private int currentRadioStation;
-    private int stationsCount;
+    private int stationsCount = 10;
 
+    public Radio(int stationsCount) {
+        this.stationsCount = stationsCount;
+    }
+/*
     // конструктор c параметром количество станций
     public Radio() {
         this.stationsCount = 10;
@@ -14,6 +25,7 @@ public class Radio {
     public Radio(int stationsCount) {
         this.stationsCount = stationsCount;
     }
+*/
     
     // гетер станции
     public int getСurrentRadioStation() {
