@@ -19,6 +19,19 @@ public class RadioTest {
         Assertions.assertEquals(expected, actual);
     }
 
+    // переключит станицю, если параметром задать новое количество. Например 50
+    @Test
+    public void shouldSetRandomStationIfChangeStationCount() {
+        Radio radio = new Radio(50);
+
+        radio.setRadioStation(49);
+
+        int expected = 49;
+        int actual = radio.getСurrentRadioStation();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
     // чтобы выбрать макисмальную станцию
     @Test
     public void shouldSetStationIfMax() {
@@ -60,7 +73,7 @@ public class RadioTest {
 
     // нельзя выбрать станцию ниже мин
     @Test
-    public void shouldSetStationBelowMin() {
+    public void shouldNotSetStationBelowMin() {
         Radio radio = new Radio();
 
         radio.setRadioStation(-1);
@@ -133,9 +146,9 @@ public class RadioTest {
     public void shouldSetVolume() {
         Radio radio = new Radio();
 
-        radio.setCurrentVolume(9);
+        radio.setCurrentVolume(99);
 
-        int expeсted = 9;
+        int expeсted = 99;
         int actual = radio.getCurrentVolume();
 
         Assertions.assertEquals(expeсted, actual);
@@ -146,9 +159,9 @@ public class RadioTest {
     public void shouldSetVolumeOnMax() {
         Radio radio = new Radio();
 
-        radio.setCurrentVolume(10);
+        radio.setCurrentVolume(100);
 
-        int expeсted = 10;
+        int expeсted = 100;
         int actual = radio.getCurrentVolume();
 
         Assertions.assertEquals(expeсted, actual);
@@ -171,7 +184,7 @@ public class RadioTest {
     public void shouldNotSetVolumeAboveMax() {
         Radio radio = new Radio();
 
-        radio.setCurrentVolume(11);
+        radio.setCurrentVolume(101);
 
         int expeсted = 0;
         int actual = radio.getCurrentVolume();
@@ -197,10 +210,10 @@ public class RadioTest {
     public void shouldIncreaseVolume() {
         Radio radio = new Radio();
 
-        radio.setCurrentVolume(9);
+        radio.setCurrentVolume(99);
         radio.increaseVolume();
 
-        int expected = 10;
+        int expected = 100;
         int actual = radio.getCurrentVolume();
 
         Assertions.assertEquals(expected, actual);
@@ -208,13 +221,13 @@ public class RadioTest {
 
     // громкость не можеть стать выше максимума
     @Test
-    public void shouldStopIncreaseVolumeOn10() {
+    public void shouldStopIncreaseVolumeOn100() {
         Radio radio = new Radio();
 
-        radio.setCurrentVolume(10);
+        radio.setCurrentVolume(100);
         radio.increaseVolume();
 
-        int expected = 10;
+        int expected = 100;
         int actual = radio.getCurrentVolume();
 
         Assertions.assertEquals(expected, actual);

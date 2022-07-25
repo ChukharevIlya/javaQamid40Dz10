@@ -1,9 +1,31 @@
 package ru.netology.qamvn.javaQamid40Dz10;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
 public class Radio {
 
     private int currentVolume;
     private int currentRadioStation;
+    private int stationsCount = 10;
+
+    public Radio(int stationsCount) {
+        this.stationsCount = stationsCount;
+    }
+/*
+    // конструктор c параметром количество станций
+    public Radio() {
+        this.stationsCount = 10;
+    }
+    //конструктор без количества станций
+    public Radio(int stationsCount) {
+        this.stationsCount = stationsCount;
+    }
+*/
     
     // гетер станции
     public int getСurrentRadioStation() {
@@ -11,14 +33,14 @@ public class Radio {
     }
 
     // сеттер для выставления любой радиостаници
-    public void setRadioStation(int newRadioStation) {
-        if (newRadioStation < 0) {
+    public void setRadioStation(int currentRadioStation) {
+        if (currentRadioStation < 0) {
             return;
         }
-        if (newRadioStation > 9) {
+        if (currentRadioStation > stationsCount - 1) {
             return;
         }
-        currentRadioStation = newRadioStation;
+        this.currentRadioStation = currentRadioStation;
     }
 
     // гетер громкости
@@ -27,19 +49,19 @@ public class Radio {
     }
 
     // сеттер громкости для получения любого значения в рамках дозволеного
-    public void setCurrentVolume(int newVolume) {
-        if (newVolume < 0) {
+    public void setCurrentVolume(int currentVolume) {
+        if (currentVolume < 0) {
             return;
         }
-        if (newVolume > 10) {
+        if (currentVolume > 100) {
             return;
         }
-        currentVolume = newVolume;
+        this.currentVolume = currentVolume;
     }
 
     // Кнопка next
     public void increaseRadioStation() {
-        if (currentRadioStation < 9) {
+        if (currentRadioStation < stationsCount - 1) {
             currentRadioStation = currentRadioStation + 1;
         } else {
             currentRadioStation = 0;
@@ -51,13 +73,13 @@ public class Radio {
         if (currentRadioStation > 0) {
             currentRadioStation = currentRadioStation - 1;
         } else {
-            currentRadioStation = 9;
+            currentRadioStation = stationsCount - 1;
         }
     }
 
     // кнопка "+" на звуке
     public void increaseVolume() {
-        if (currentVolume < 10) {
+        if (currentVolume < 100) {
             currentVolume = currentVolume + 1;
         }
     }
